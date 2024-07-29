@@ -55,6 +55,9 @@ const IPInfo = () => {
     return <div>Loading...</div>;
   }
 
+  // Разделение org по пробелу и получение первого элемента
+  const orgFirstPart = ipInfo.org ? ipInfo.org.split(' ')[1] : 'Not available';
+
   return (
     <div>
       <h1>IP Information</h1>
@@ -62,8 +65,7 @@ const IPInfo = () => {
       <p><strong>City:</strong> {ipInfo.city}</p>
       <p><strong>Region:</strong> {ipInfo.region}</p>
       <p><strong>Country:</strong> {ipInfo.country}</p>
-      <p><strong>Org:</strong> {ipInfo.org}</p>
-      <p><strong>Mobile:</strong> {ipInfo.mobile || 'Not available'}</p>
+      <p><strong>Mobile:</strong> {orgFirstPart || 'Not available'}</p>
 
       <div style={{ height: '400px', width: '100%' }}>
         <LoadScript googleMapsApiKey={VITE_GOOGLE_MAPS_API_KEY}>
